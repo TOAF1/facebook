@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bootstrap4/css/bootstrap.css">
+	<style type="">
+		table{
+			border: solid #000 3px;
+			width: 30%;
+			height: 60px;
+			margin-top: 5%;
+			background-color:;}
+
+			input{
+				width: 100%;
+				height: 90px;
+				color: #0000
+			}
+
+			button{
+				width: 120px;
+				height: 70px;
+				color: red;
+				border: dotted green 1.5px;
+		}
+	</style>
+</head>
+<body>
+
+		<div class="container-fluid">
+		<div class="row">
+		<div class="col-md-4">
+		</div><div class="col-md-4">
+		<table class="table table-warning">
+		<tr>
+			<td colspan="4"><input type="text" name="" id="result"></td>
+		<tr>
+		<td><button onclick="get('1')">1</button></td>
+		<td><button onclick="get('2')">2</button></td>
+		<td><button onclick="get('3')">3</button></td>
+		<td><button onclick="oper('plus')">+</button></td>
+		</tr>
+		<tr>
+		<td><button onclick="get('4')">4</button></td>
+		<td><button onclick="get('5')">5</button></td>
+		<td><button onclick="get('6')">6</button></td>
+		<td><button onclick="oper('minus')">-</button></td>
+		</tr>
+		<tr>
+		<td><button onclick="get('7')">7</button></td>
+		<td><button onclick="get('8')">8</button></td>
+		<td><button onclick="get('9')">9</button></td>
+		<td><button onclick="oper('times')">*</button></td>
+		</tr>
+		<tr>
+		<td><button onclick="get('.')">.</button></td>
+		<td><button onclick="get('0')">0</button></td>
+		<td><button value="=" onclick="equal()">=</button></td>
+		<td><button onclick="oper('div')">/</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="get('>')">></button></td>
+			<td><button onclick="get('<')"><</button></td>
+			<td><button onclick="get('%')">%</button></td>
+			<td><button onclick="clears()">del</button></td>
+
+		</tr>
+		</tr>
+			
+		</table>
+
+		</div>
+		<div class="col-md-4"></div>
+		</div>
+			
+		</div>
+</body>
+		<script type="text/javascript">
+
+			var fvalue;
+			var svalue;
+			var sign;
+			function oper(u)
+			{
+				sign=u;
+				fvalue=document.getElementById('result').value;
+				document.getElementById('result').value="";
+			}			
+			function get(a)
+			{
+				var k=a;
+				document.getElementById('result').value+=a
+			}
+			function clears()
+			{	
+				var str = document.getElementById('result').value;
+					str=str.toString();
+				var l = str.length;
+				
+				var p = str.slice(0,l-1);
+				//alert(p);
+				document.getElementById('result').value = p;
+
+			}
+			function equal(){
+				svalue=document.getElementById('result').value;
+				if(sign=="plus"){
+					answer=parseInt(fvalue) + parseInt(svalue);
+					document.getElementById('result').value= answer;
+				}
+				else if(sign=="minus"){
+					answer=fvalue - svalue;
+					document.getElementById('result').value= answer;
+				}
+				else if(sign=="div"){
+					answer=(fvalue) / (svalue);
+					document.getElementById('result').value= answer
+				}
+				else if(sign=="times"){
+					answer=(fvalue) * (svalue);
+					document.getElementById('result').value= answer
+				}
+			}
+		</script>
+</html>  
